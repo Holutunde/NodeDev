@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "name": "firstexpressapp",
+  "version": "1.0.0",
+  "description": "\"MyFirstExpressApp\"",
+  "main": "App.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olutunde Sokunbi",
+  "license": "ISC"
+}
