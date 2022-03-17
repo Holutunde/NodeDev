@@ -7,14 +7,10 @@ mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  description: String,
-})
+var Campground = require('./models/campground')
+var seedDB = require('./seeds')
 
-var Campground = mongoose.model('Campground', campgroundSchema)
+seedDB()
 
 // Campground.create(
 //   {
