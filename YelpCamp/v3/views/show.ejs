@@ -1,13 +1,13 @@
 <%- include ('partials/header') -%>
 
-<h1>This is the show template</h1>
-
-<p><%=campfound.name%></p>
+<h1><%=campfound.name%></h1>
 
 <img src="<%=campfound.image%>"%>
 <div>
-
     <p><%=campfound.description%></p>
 </div>
+<% campfound.comments.forEach(function(comment){%>
+       <p><%=comment.author%> - <%=comment.text%></p>
+<%})%>
 
 <%- include ('partials/footer') -%>

@@ -45,14 +45,17 @@ app.get('/campgrounds/new', function (req, res) {
 //SHOW - shows more details about one campground
 app.get('/campgrounds/:id', function (req, res) {
   //find the campground with provided id
-  Campground.findById(req.params.id, function (err, foundCampround) {
-    if (err) {
-      console.log(err)
-    } else {
-      //render show template with that campground
-      res.render('show', { campfound: foundCampround })
-    }
-  })
+  Campground.findById(req.params.id)
+    .populate('comments')
+    .exec(function (err, foundCampground) {
+      if (err) {
+        console.log(err)
+      } else {
+        //render show template with that campground
+        console.log(foundCampground)
+        res.render('show', { campfound: foundCampground })
+      }
+    })
 })
 
 app.listen(3004, function () {
