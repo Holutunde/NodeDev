@@ -7,9 +7,9 @@ mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
+seedDB()
 var Campground = require('./models/campground')
 var seedDB = require('./seeds')
-seedDB()
 
 app.get('/landing', function (req, res) {
   res.render('landing')
