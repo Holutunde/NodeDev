@@ -9,73 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 var Campground = require('./models/campground')
 var seedDB = require('./seeds')
-
 seedDB()
-
-// Campground.create(
-//   {
-//     name: 'Olutunde',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloh2QPnFddiRhrtghChP-0sUmS9fYsaKhmQ&usqp=CAU',
-//     description: 'This is a beautiful man with a good heartt',
-//   },
-//   function (err, campground) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       console.log('Newly Created')
-//       console.log(campground)
-//     }
-//   },
-// )
-
-// var campgrounds = [
-//   {
-//     name: 'Olutunde',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloh2QPnFddiRhrtghChP-0sUmS9fYsaKhmQ&usqp=CAU',
-//   },
-//   {
-//     name: 'Topeolu',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7CDJOX-23QWdPR_NUaT-BjQtfK4uTDhhJDA&usqp=CAU',
-//   },
-//   {
-//     name: 'Benson',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgz2Bsvc_-JTfljr-Wjgrss9YWrxVZpJ8o-w&usqp=CAU',
-//   },
-//   {
-//     name: 'Olutunde',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloh2QPnFddiRhrtghChP-0sUmS9fYsaKhmQ&usqp=CAU',
-//   },
-//   {
-//     name: 'Topeolu',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7CDJOX-23QWdPR_NUaT-BjQtfK4uTDhhJDA&usqp=CAU',
-//   },
-//   {
-//     name: 'Benson',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgz2Bsvc_-JTfljr-Wjgrss9YWrxVZpJ8o-w&usqp=CAU',
-//   },
-//   {
-//     name: 'Olutunde',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloh2QPnFddiRhrtghChP-0sUmS9fYsaKhmQ&usqp=CAU',
-//   },
-//   {
-//     name: 'Topeolu',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7CDJOX-23QWdPR_NUaT-BjQtfK4uTDhhJDA&usqp=CAU',
-//   },
-//   {
-//     name: 'Benson',
-//     image:
-//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgz2Bsvc_-JTfljr-Wjgrss9YWrxVZpJ8o-w&usqp=CAU',
-//   },
-// ]
 
 app.get('/landing', function (req, res) {
   res.render('landing')
@@ -121,6 +55,6 @@ app.get('/campgrounds/:id', function (req, res) {
   })
 })
 
-app.listen(3006, function () {
+app.listen(3004, function () {
   console.log('YelpCamp has started running')
 })
