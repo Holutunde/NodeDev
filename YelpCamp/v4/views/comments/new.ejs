@@ -3,7 +3,7 @@
 
             <h2 style="text-align: center">Added New Commments to: <%=campground.name%></h2>
             <div style="width: 30%; margin: 0 auto;">
-            <form action="/campgrounds/<%=campground._id%>" method="POST">
+            <form action="/campgrounds/<%=campground._id%>/comments" method="POST">
                   <div class="form-group">
 
                         <input class='form-control' type='text' name='comment[text]' placeholder="text">

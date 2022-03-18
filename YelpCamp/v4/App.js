@@ -68,20 +68,20 @@ app.get('/campgrounds/:id/comments/new', function (req, res) {
     }
   })
 })
-app.post('/campgrounds/:id/comment', function (req, res) {
+app.post('/campgrounds/:id/comments', function (req, res) {
   //lookup campground using id
   Campground.findById(req.params.id, function (err, campground) {
     if (err) {
       console.log(err)
       res.redirect('/campgrounds')
     } else {
-      Comment.create(req.body.Comment, function (err, comment) {
+      Comment.create(req.body.comment, function (err, comment) {
         if (err) {
           console.log(err)
         } else {
           campground.comments.push(comment)
           campground.save()
-          res.redirect('./campgrounds/' + campground._id)
+          res.redirect('/campgrounds/' + campground._id)
         }
       })
     }
