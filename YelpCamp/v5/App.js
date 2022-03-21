@@ -53,14 +53,14 @@ app.get('/campgrounds/:id', function (req, res) {
         console.log(err)
       } else {
         //render show template with that campground
-        // console.log(foundCampground)
+        console.log(foundCampground)
         res.render('campgrounds/show', { campfound: foundCampground })
       }
     })
 })
-
+//-------------------
 //COMMENTS ROUTE
-//---------------
+//--------------------
 app.get('/campgrounds/:id/comments/new', function (req, res) {
   Campground.findById(req.params.id, function (err, campground) {
     if (err) {
