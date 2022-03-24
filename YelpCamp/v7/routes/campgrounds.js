@@ -5,7 +5,7 @@ var express = require('express'),
 //index route
 router.get('/campgrounds', function (req, res) {
   // var existingUser = req.user
-  //Get all campgrounds from DB
+  //Get all campgrounds from Database
   Campground.find({}, function (err, allCampgrounds) {
     if (err) {
       console.log(err)
