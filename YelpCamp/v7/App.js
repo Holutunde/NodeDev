@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 seedDB()
 
-//PASSPORT CONFIGURATION
+//passport configuration
 app.use(
   require('express-session')({
     secret: 'Once again we move',
