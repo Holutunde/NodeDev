@@ -46,7 +46,7 @@ router.get('/logout', function (req, res) {
 })
 
 //midlleware
-function isLoggedIn(req, res, next) {
+const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next()
   } else {
@@ -54,4 +54,4 @@ function isLoggedIn(req, res, next) {
   }
 }
 
-modules.export = router
+module.exports = router

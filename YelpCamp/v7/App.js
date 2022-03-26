@@ -4,8 +4,6 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   User = require('./models/user'),
-  Campground = require('./models/campground'),
-  Comment = require('./models/comment'),
   LocalStrategy = require('passport-local'),
   seedDB = require('./seeds'),
   passportLocalMongoose = require('passport-local-mongoose'),
@@ -43,6 +41,6 @@ app.use('/', authRoutes)
 app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/comments', commentRoutes)
 
-app.listen(3004, function () {
+app.listen(3003, function () {
   console.log('YelpCamp has started running')
 })

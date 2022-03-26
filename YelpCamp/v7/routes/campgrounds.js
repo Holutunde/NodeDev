@@ -3,7 +3,7 @@ var express = require('express'),
   Campground = require('../models/campground')
 
 //index route
-router.get('/campgrounds', function (req, res) {
+router.get('/', function (req, res) {
   // var existingUser = req.user
   //Get all campgrounds from Database
   Campground.find({}, function (err, allCampgrounds) {
