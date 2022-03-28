@@ -39,6 +39,9 @@ router.post('/', function (req, res) {
     if (err) {
       console.log(err)
     } else {
+      // newlyCreated.author.id = req.user._id
+      // newlyCreated.author.username = req.user.username
+      // newlyCreated.save()
       console.log(newlyCreated)
       res.redirect('/campgrounds')
     }

@@ -24,21 +24,15 @@ router.post('/', isLoggedIn, function (req, res) {
       console.log(err)
       res.redirect('/campgrounds')
     } else {
-      var author = {
-        id: req.user._id,
-        username: req.user.username,
-      }
-      var comment = req.body.comment
-      var newDetails = { author: author, comment: comment }
-      Comment.create(newDetails, function (err, comment) {
+      Comment.create(req.body.comment, function (err, comment) {
         if (err) {
           console.log(err)
         } else {
           //Add username and id to comment
-          // comment.author.id = req.user._id
-          // comment.author.username = req.user.username
+          comment.author.id = req.user._id
+          comment.author.username = req.user.username
           //save comment
-          // comment.save()
+          comment.save()
           campground.comments.push(comment)
           campground.save()
           res.redirect('/campgrounds/' + campground._id)
