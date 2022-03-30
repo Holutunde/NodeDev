@@ -16,6 +16,7 @@ var express = require('express'),
 mongoose.connect('mongodb://localhost/yelp_camp_v8')
 app.set('view engine', 'ejs')
 app.use(expressSanitizer())
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 //disable seedDB

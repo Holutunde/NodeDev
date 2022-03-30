@@ -1,0 +1,11 @@
+#delete-form{
+    display: inline;
+}
+.name-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text-right{
+    float: right;
+}

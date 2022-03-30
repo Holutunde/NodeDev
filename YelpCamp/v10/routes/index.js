@@ -43,7 +43,7 @@ router.post(
 //Logout route
 router.get('/logout', function (req, res) {
   req.logout()
-  res.redirect('/')
+  res.redirect('/login')
 })
 
 //midlleware

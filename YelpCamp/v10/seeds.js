@@ -32,37 +32,37 @@ var data = [
 const seedDB = () => {
   //Remove all campgronds
   Campground.deleteMany({}, function (err) {
-    // if (err) {
-    //   console.log(err)
-    // } else {
-    //   console.log('All campgrounds removed')
-    //   //Add a few campgrounds
-    //   data.forEach(function (seed) {
-    //     Campground.create(seed, function (err, campground) {
-    //       if (err) {
-    //         console.log(err)
-    //       } else {
-    //         console.log('Added a campground')
-    //         //Create a comment
-    //         Comment.create(
-    //           {
-    //             text: 'This place is dope',
-    //             author: 'Tommy Shelby',
-    //           },
-    //           function (err, comment) {
-    //             if (err) {
-    //               console.log(err)
-    //             } else {
-    //               campground.comments.push(comment)
-    //               campground.save()
-    //               console.log('Created New Comments')
-    //             }
-    //           },
-    //         )
-    //       }
-    //     })
-    //   })
-    // }
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('All campgrounds removed')
+      //Add a few campgrounds
+      data.forEach(function (seed) {
+        Campground.create(seed, function (err, campground) {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log('Added a campground')
+            //Create a comment
+            Comment.create(
+              {
+                text: 'This place is dope',
+                author: 'Tommy Shelby',
+              },
+              function (err, comment) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  campground.comments.push(comment)
+                  campground.save()
+                  console.log('Created New Comments')
+                }
+              },
+            )
+          }
+        })
+      })
+    }
   })
 }
 
