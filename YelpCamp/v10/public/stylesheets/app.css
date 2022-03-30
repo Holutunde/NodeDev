@@ -9,3 +9,6 @@
 .text-right{
     float: right;
 }
+.img-responsive{
+    height: 90%;
+}

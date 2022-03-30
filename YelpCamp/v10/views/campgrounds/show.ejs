@@ -25,41 +25,53 @@
                         </em>
                     </p>
                     <div>
-                      <a class="btn btn-warning" href="/campgrounds/<%=campfound._id%>/edit">Edit</a>
-                      <form id="delete-form" action="/campgrounds/<%= campfound._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">DELETE</button>   
-                    </form> 
+                   
+
+                        <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campfound._id%>/edit">Edit</a>
+                        <form id="delete-form" action="/campgrounds/<%= campfound._id %>?_method=DELETE" method="POST">
+                          <button class="btn btn-danger">DELETE</button>   
+                      </form> 
+                    
                     </div>
                 </div>
-            </div>
-            <div style="margin-left: 30px;">
-                <div class="text-right">
-                    <a class="btn btn-success" href="/campgrounds/<%=campfound._id%>/comments/new">Add New Comment</a>
-                </div>
-                <div>
-
-                    <hr>
-                </div>
-                <div >           
-                <% campfound.comments.forEach(function(comment){%>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="display: flex; justify-content: space-between;"> 
-
-                                <h4><%=comment.author.username %></h4>
-                                <h5 class="pull-right">10 days ago</h5>
-                            </div>
-                            <p>
-                                <%=comment.text%>
-                            </p>
-                        </div>
-                    </div>
-                 
-             <%})%>
-            </div>
             </div>
         </div>
-    </div>
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-9">
+                  <div class="card" style="padding: 10px; margin-top: 10px; background-color: rgb(238, 224, 208);">
+                    <div class="text-right">
+                        <a class="btn btn-xs btn-success" href="/campgrounds/<%=campfound._id%>/comments/new">Add New Comment</a>
+                    </div>
+                            <hr>
+                    <div >           
+                    <% campfound.comments.forEach(function(comment){%>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="display: flex; justify-content: space-between;"> 
+    
+                                    <h5><%=comment.author.username %></h5>
+                                    <p class="pull-right">10 days ago</p>
+                                </div>
+                                <p>
+                                    <%=comment.text%>
+                                </p>
+                                <a class="btn btn-xs btn-warning" 
+                                  href="/campgrounds/<%=campfound._id%>/comments/<%=comment._id%>/edit">
+                                  Edit
+                                </a>
+                            </div>
+                        </div>
+                     
+                      <%})%>
+                     </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
 </div>
 
 
