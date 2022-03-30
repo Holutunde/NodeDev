@@ -43,12 +43,12 @@ router.post('/', isLoggedIn, function (req, res) {
 })
 
 //COMMENT EDIT
-router.get('/:comment_.id/edit', function (req, res) {
+router.get('/:comment_id/edit', function (req, res) {
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     if (err) {
       res.redirect('back')
     } else {
-      res.render('/comments/edit', {
+      res.render('comments/edit', {
         campground_id: req.params.id,
         comment: foundComment,
       })
@@ -60,7 +60,7 @@ router.put('/:comment_id', function (req, res) {
   //find the campground with provided id
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function (
     err,
-    foundCampground,
+    updatedComment,
   ) {
     if (err) {
       console.log(err)
