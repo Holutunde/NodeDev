@@ -1,6 +1,7 @@
 var express = require('express'),
   router = express.Router({ mergeParams: true }),
-  Campground = require('../models/campground')
+  Campground = require('../models/campground'),
+  middleware = require('../middleware')
 
 //index route
 router.get('/', function (req, res) {
@@ -19,7 +20,7 @@ router.get('/', function (req, res) {
   })
 })
 
-//new route
+//CREATE new route
 router.post('/', function (req, res) {
   var name = req.body.name
   var image = req.body.image
@@ -47,6 +48,7 @@ router.post('/', function (req, res) {
     }
   })
 })
+//NEW
 router.get('/new', function (req, res) {
   res.render('campgrounds/new')
 })
@@ -68,7 +70,10 @@ router.get('/:id', function (req, res) {
 })
 
 //EDIT
-router.get('/:id/edit', checkCampgroundOwenership, function (req, res) {
+router.get('/:id/edit', middleware.checkCampgroundOwnership, function (
+  req,
+  res,
+) {
   Campground.findById(req.params.id, function (err, foundCampground) {
     res.render('campgrounds/edit', { campfound: foundCampground })
   })
@@ -93,7 +98,7 @@ router.put('/:id', function (req, res) {
 })
 
 //DELETE
-router.delete('/:id', checkCampgroundOwenership, function (req, res) {
+router.delete('/:id', middleware.checkCampgroundOwnership, function (req, res) {
   Campground.findById(req.params.id, function (err, campground) {
     if (err) {
       console.log(err)
@@ -104,27 +109,4 @@ router.delete('/:id', checkCampgroundOwenership, function (req, res) {
   })
 })
 
-function checkCampgroundOwenership(req, res, next) {
-  if (req.isAuthenticated()) {
-    //find the campground with provided id
-    Campground.findById(req.params.id, function (err, foundCampground) {
-      if (err) {
-        console.log(err)
-        res.redirect('back')
-      } else {
-        //render show template with that campground
-        if (foundCampground.author.id.equal(req.user._id)) {
-          //console.log(foundCampground.author.id)
-          next()
-        } else {
-          console.log(req.user)
-          console.log(foundCampground)
-          res.redirect('back')
-        }
-      }
-    })
-  } else {
-    res.redirect('back')
-  }
-}
 module.exports = router
