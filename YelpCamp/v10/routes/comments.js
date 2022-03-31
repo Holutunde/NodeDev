@@ -43,7 +43,7 @@ router.post('/', isLoggedIn, function (req, res) {
 })
 
 //COMMENT EDIT
-router.get('/:comment_id/edit', checkCommentOwnership, function (req, res) {
+router.get('/:comment_id/edit', function (req, res) {
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     res.render('comments/edit', {
       campground_id: req.params.id,
@@ -67,17 +67,16 @@ router.put('/:comment_id', function (req, res) {
 })
 
 //DELETE
-router.delete('/:id', function (req, res) {
-  Comment.findById(req.params.id, function (err, campground) {
+router.delete('/:comment_id', function (req, res) {
+  //findByIdAndRemove
+  Comment.findByIdAndRemove(req.params.comment_id, function (err) {
     if (err) {
-      console.log(err)
+      res.redirect('back')
     } else {
-      campground.remove()
-      res.redirect('/campgrounds')
+      res.redirect('/campgrounds/' + req.params.id)
     }
   })
 })
-
 //middleware
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -97,13 +96,11 @@ function checkCommentOwnership(req, res, next) {
         if (foundComment.author.id.equals(req.user._id)) {
           next()
         } else {
-          req.flash('error', "You don't have permission to do that")
           res.redirect('back')
         }
       }
     })
   } else {
-    req.flash('error', 'You need to be logged in to do that')
     res.redirect('back')
   }
 }
