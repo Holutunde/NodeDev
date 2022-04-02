@@ -22,14 +22,14 @@ router.post('/register', function (req, res) {
       return res.render('register')
     }
     passport.authenticate('local')(req, res, function () {
-      req.flash('success', 'Welcome to YelpCamp ' + user.username)
+      req.flash('success', 'Welcome to YelpCamp')
       res.redirect('/campgrounds')
     })
   })
 })
 //show login form
 router.get('/login', function (req, res) {
-  res.render('login', { message: req.flash('error') })
+  res.render('login')
 })
 
 router.post(

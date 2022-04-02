@@ -5,14 +5,14 @@ var express = require('express'),
   expressSanitizer = require('express-sanitizer'),
   mongoose = require('mongoose'),
   flash = require('connect-flash')
-  methodOverride = require('method-override'),
-  User = require('./models/user'),
-  LocalStrategy = require('passport-local'),
-  seedDB = require('./seeds'),
-  passportLocalMongoose = require('passport-local-mongoose'),
-  commentRoutes = require('./routes/comments'),
-  campgroundRoutes = require('./routes/campgrounds'),
-  authRoutes = require('./routes/index')
+;(methodOverride = require('method-override')),
+  (User = require('./models/user')),
+  (LocalStrategy = require('passport-local')),
+  (seedDB = require('./seeds')),
+  (passportLocalMongoose = require('passport-local-mongoose')),
+  (commentRoutes = require('./routes/comments')),
+  (campgroundRoutes = require('./routes/campgrounds')),
+  (authRoutes = require('./routes/index'))
 
 mongoose.connect('mongodb://localhost/yelp_camp_v8')
 app.set('view engine', 'ejs')
@@ -40,7 +40,9 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use(function (req, res, next) {
-  res.locals.currentUser = req.user //To make req.user available in the partials
+  res.locals.currentUser = req.user
+  res.locals.error = req.flash('error')
+  res.locals.success = req.flash('success')
   next() //Inoder to move to the next middleware
 })
 

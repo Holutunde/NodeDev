@@ -43,13 +43,13 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
       // newlyCreated.author.id = req.user._id
       // newlyCreated.author.username = req.user.username
       // newlyCreated.save()
-      console.log(newlyCreated)
+      // console.log(newlyCreated)
       res.redirect('/campgrounds')
     }
   })
 })
 //NEW
-router.get('/new', function (req, res) {
+router.get('/new', middleware.isLoggedIn, function (req, res) {
   res.render('campgrounds/new')
 })
 
