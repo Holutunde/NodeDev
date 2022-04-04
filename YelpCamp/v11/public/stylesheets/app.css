@@ -12,3 +12,10 @@
 .img-responsive{
     height: 90%;
 }
+.jumbotron {
+    margin-top: 2em;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+  }

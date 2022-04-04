@@ -45,7 +45,10 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
 })
 
 //COMMENT EDIT
-router.get('/:comment_id/edit', function (req, res) {
+router.get('/:comment_id/edit', middleware.checkCommentOwnership, function (
+  req,
+  res,
+) {
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     res.render('comments/edit', {
       campground_id: req.params.id,
@@ -55,7 +58,10 @@ router.get('/:comment_id/edit', function (req, res) {
 })
 
 //COMMENT UPDATE
-router.put('/:comment_id', function (req, res) {
+router.put('/:comment_id', middleware.checkCommentOwnership, function (
+  req,
+  res,
+) {
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function (
     err,
     updatedComment,
@@ -69,7 +75,10 @@ router.put('/:comment_id', function (req, res) {
 })
 
 //DELETE
-router.delete('/:comment_id', function (req, res) {
+router.delete('/:comment_id', middleware.checkCommentOwnership, function (
+  req,
+  res,
+) {
   //findByIdAndRemove
   Comment.findByIdAndRemove(req.params.comment_id, function (err) {
     if (err) {

@@ -3,20 +3,16 @@
             <h2 style="text-align: center">Edit <%=campfound.name%></h2>
             <div style="width: 30%; margin: 0 auto;">
             <form action="/campgrounds/<%= campfound._id %>?_method=PUT" method="POST">
-                  <div class="form-group">
-
+                  <div class="mb-3">
                         <input class='form-control' type='text' name='campground[name]' value="<%= campfound.name%>">
                   </div>
-                  <div class="form-group">
-                        
+                  <div class="mb-3">
                         <input class="form-control" type='text' name='campground[image]' value="<%= campfound.image%>">
                   </div>
-                  <div class="form-group">
-                        
+                  <div class="mb-3">
                         <input class="form-control" type='text' name='campground[description]' value="<%= campfound.description%>">
                   </div>
-                  <div class="form-group">
-                        
+                  <div class="mb-3">
                         <button class="btn btn-lg btn-primary btn-block">Submit</button>
                   </div>
             </form>
