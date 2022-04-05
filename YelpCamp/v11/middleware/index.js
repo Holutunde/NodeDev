@@ -13,6 +13,8 @@ middlewareObj.checkCampgroundOwnership = function (req, res, next) {
       } else {
         // does user own the campground?
         if (foundCampground.author.id.toString() === req.user._id.toString()) {
+          console.log(foundCampground.author.id.toString())
+          console.log(req.user._id.toString())
           next()
         } else {
           req.flash('error', "You don't have permission to do that")
@@ -21,7 +23,7 @@ middlewareObj.checkCampgroundOwnership = function (req, res, next) {
       }
     })
   } else {
-    req.flash('error', 'You need to be logged in to do that')
+    req.flash('error', 'Kidly log in to edit or delete campground')
     res.redirect('back')
   }
 }
@@ -33,7 +35,7 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
         res.redirect('back')
       } else {
         // does user own the comment?
-        if (JSON.stringify(foundComment.author.id) == req.user._id) {
+        if (foundComment.author.id.toString() === req.user._id.toString()) {
           next()
         } else {
           req.flash('error', "You don't have permission to do that")
@@ -42,7 +44,7 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
       }
     })
   } else {
-    req.flash('error', 'You need to be logged in to do that')
+    req.flash('error', 'Kidly log in to edit or delete comment')
     res.redirect('back')
   }
 }
