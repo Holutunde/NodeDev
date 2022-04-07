@@ -7,7 +7,7 @@ var commentSchema = new mongoose.Schema({
     //storing the login details here
     id: {
       type: mongoose.Schema.Types.ObjectId,
-      //ref - the model we refer to with the object ID
+      //the model we refer to with the object ID
       ref: 'User',
     },
     username: String,
