@@ -12,7 +12,7 @@ middlewareObj.checkCampgroundOwnership = function (req, res, next) {
         res.redirect('back')
       } else {
         // does user own the campground?
-        if (foundCampground.author.id.toString() === req.user._id.toString()) {
+        if (foundCampground.author.id.toString() == req.user._id.toString()) {
           console.log(foundCampground.author.id.toString())
           console.log(req.user._id.toString())
           next()

@@ -17,6 +17,7 @@ router.post('/register', function (req, res) {
   var user = req.body.username
   var pass = req.body.password
   User.register(new User({ username: user }), pass, function (err, user) {
+    console.log(err)
     if (err) {
       req.flash('error', err.message)
       return res.render('register')
