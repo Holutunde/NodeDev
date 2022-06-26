@@ -4,7 +4,8 @@
   "description": "YelpCamp v1",
   "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon App.js"
   },
   "author": "Olutunde",
   "license": "ISC",
@@ -17,8 +18,12 @@
     "express-session": "^1.17.2",
     "method-override": "^3.0.0",
     "mongoose": "^6.2.6",
+    "nodemon": "^2.0.18",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }

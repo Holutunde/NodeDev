@@ -13,6 +13,7 @@ app.get('/dog', function (req, res) {
 //routes parameter
 app.get('/r/:sub', function (req, res) {
   var name = req.params.sub
+  console.log(req.params)
   res.send(`This is the ${name.toUpperCase()} parameter `)
 })
 
