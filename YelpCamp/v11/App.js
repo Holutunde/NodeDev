@@ -6,13 +6,13 @@ var express = require('express'),
   mongoose = require('mongoose'),
   flash = require('connect-flash'),
   methodOverride = require('method-override'),
-  User = require('./models/user'),
+  User = require('./server/models/user'),
   LocalStrategy = require('passport-local'),
   seedDB = require('./seeds'),
   passportLocalMongoose = require('passport-local-mongoose'),
-  commentRoutes = require('./routes/comments'),
-  campgroundRoutes = require('./routes/campgrounds'),
-  authRoutes = require('./routes/index')
+  commentRoutes = require('./server/routes/comments'),
+  campgroundRoutes = require('./server/routes/campgrounds'),
+  authRoutes = require('./server/routes/index')
 
 mongoose.connect('mongodb://localhost/yelp_camp_v8')
 app.set('view engine', 'ejs')
