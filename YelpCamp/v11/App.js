@@ -14,7 +14,10 @@ var express = require('express'),
   campgroundRoutes = require('./server/routes/campgrounds'),
   authRoutes = require('./server/routes/index')
 
-mongoose.connect('mongodb://localhost/yelp_camp_v8')
+mongoose.connect('mongodb://localhost/yelp_camp_v8', function (error) {
+  if (error) console.log(error)
+  console.log('Connected to database successfully')
+})
 app.set('view engine', 'ejs')
 app.use(expressSanitizer())
 app.use(flash())
@@ -43,7 +46,7 @@ app.use(function (req, res, next) {
   res.locals.currentUser = req.user
   res.locals.error = req.flash('error')
   res.locals.success = req.flash('success')
-  next() //Inoder to move to the next middleware
+  next()
 })
 
 app.use('/', authRoutes)
