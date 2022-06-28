@@ -64,6 +64,7 @@ app.post('/campgrounds', function (req, res) {
   var name = req.body.name
   var image = req.body.image
   var data = { name: name, image: image }
+  console.log(data)
   campgrounds.push(data)
   res.redirect('/campgrounds')
 })
