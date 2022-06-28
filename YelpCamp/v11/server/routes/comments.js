@@ -1,6 +1,6 @@
-var express = require('express'),
-  router = express.Router({ mergeParams: true }),
-  middleware = require('../../middleware/index')
+;(express = require('express')),
+  (router = express.Router({ mergeParams: true })),
+  (middleware = require('../../middleware/index'))
 
 const {
   createNewComment,
@@ -8,7 +8,7 @@ const {
   editComment,
   updateComment,
   deleteComment,
-} = require('../controllers/campground.js')
+} = require('../controllers/comment')
 
 //GET NEW COMMENT PAGE
 router.get('/new', middleware.isLoggedIn, newCommentPage)
